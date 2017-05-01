@@ -8,6 +8,12 @@
 - This architecture affords smooth incorporation of attribute-based embedding space over the non-background category labels in classification models; while bypassing the background label.
 
 
+
+
+
+
+
+
 ### Licence
 TacklingBkgndDifferently © 2015, Torr Vision Group, The University of Oxford (the "Software")
 The Software remains the property of the University of Oxford ("the University").
