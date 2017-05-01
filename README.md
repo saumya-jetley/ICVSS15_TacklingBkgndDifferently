@@ -14,4 +14,4 @@
 
 
 
-<a href=https://github.com/saumya-jetley/TacklingBkgndDifferently_ICVSS15/blob/master/License>##License</a>
+<a href=https://github.com/saumya-jetley/TacklingBkgndDifferently_ICVSS15/blob/master/License>License</a>
