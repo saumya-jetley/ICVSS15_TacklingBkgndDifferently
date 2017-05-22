@@ -5,7 +5,7 @@
 - For recognition in real-world, soa CNN-based detection models trivially introduce a background class which includes everything besides the object categories of interest, see <a href=https://arxiv.org/pdf/1504.08083.pdf>Fast-RCNN</a>, <a href=https://arxiv.org/abs/1506.01497>Faster R-CNN</a>. However, the background class is ill-defined and has a changing definition based on the foreground object categories considered. Establishing an attribute mapping for the background class is ambiguous and unclear.
 - Thus, existing deep convolutional recognition pipelines need to be modified to allow bypassing an attribute mapping for the background. We propose one such modification in the current work. The proposed architecture affords incorporation of attribute-based embedding space over the non-background category labels in classification models; while bypassing the background label by the use of a learned threshold that is supposed to preemptively filter out non-object samples.
 - ![alt text](https://github.com/saumya-jetley/TacklingBkgndDifferently_ICVSS15/blob/master/poster/poster.pdf)
-[[https://github.com/saumya-jetley/TacklingBkgndDifferently_ICVSS15/blob/master/poster/poster.pdf|alt=octocat]]
+
 
 
 
