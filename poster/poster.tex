@@ -297,14 +297,15 @@ counter-intuitive
  \headerbox{ProposedApproach}{name=proapp,column=1.25,below=motivation,span=1.8}{
  The aim is to describe the background class with a threshold T (fixed or
  learned), such that:
-\begin{center}
-$x$ =
+ \begin{equation}
+\centering
+x =
 \begin{cases}
-${\rm background}$, & \text{if }  $s_c$ < $T$ \forall\text{ }c
+{\rm background}, & \text{if }  s_c < T \text{ }\forall\text{ }c
 \in\{1,\ldots,C\}\\
-${\rm object}$, & \text{otherwise}
+{\rm object}, & \text{otherwise}
 \end{cases}
-\end{center}
+\end{equation}
 , where $x$ is the input sample and $s_c$ is the score (activation) before the
 final softmax layer and $C$ is the total number of object classes (ref. Fig.1).
 }
