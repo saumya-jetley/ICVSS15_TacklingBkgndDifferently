@@ -266,36 +266,34 @@
 \headerbox{Abstract}{name=abstract,column=0,row=0,span=1.25}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\smaller
-Practical vision systems need to identify objects from amongst $n$
-different classes of interest while distinguishing them from the residual
-image content i.e. the background. Background does not have one
-consistent definition, yet highly successful approaches based on
+Practical vision systems need to identify objects as belonging to one of $n$
+different classes of interest while distinguishing them from the remaining
+image content often clumped together as `the background class'. 
+Background does not have one consistent definition, yet highly successful approaches based on
 CNNs\cite{RCNN,FCN}, treat it as a regular object category and attempt to learn
 its appearance. This is counter-intuitive.
 
 We propose a modified deepnet architecture for tackling background class as
-'something other than the objects of interest'. We filter the background samples 
-using a threshold that is learnt via end-to-end training and not as an optimum
-of a sub-problem. Separating the background samples allows us to define unambiguous
-output embedding space for just the object classes which offers	 a promising
-potential to boost classification as well as zero-shot performance.
-}
+`something other than the object categories of interest.' We filter out the background samples 
+using a threshold that is learnt via end-to-end training. 
+Separating the background samples allows us to define an unambiguous
+output embedding space  grounded completely in the object classes of interest,
+ which has benefits for the task of zero-shot recognition.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  \headerbox{Motivation}{name=motivation,column=1.25,span=1.8}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Issues with the traditional way of handling 'background' in a deepnet:
 \begin{itemize}
-\item Learning \textbf{dissimilar visual patterns} as background class is
-counter-intuitive
-\item Priors such as \textbf{natural language semantics, attributes are not available} for background class
+\item Learning \textbf{non-similar visual patterns} as one single background class is counter-intuitive.
+\item Unique priors based on \textbf{natural language semantics, attributes are not available} for background class.
 \end{itemize}
 %   \vspace{0.3em}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \headerbox{ProposedApproach}{name=proapp,column=1.25,below=motivation,span=1.8}{
- The aim is to describe the background class with a threshold T (fixed or
+ \headerbox{Proposed Approach}{name=proapp,column=1.25,below=motivation,span=1.8}{
+ The aim is to identify samples of the background class using a threshold T (fixed or
  learned), such that:
  \begin{equation}
 \centering
@@ -306,8 +304,7 @@ x =
 {\rm object}, & \text{otherwise}
 \end{cases}
 \end{equation}
-, where $x$ is the input sample and $s_c$ is the score (activation) before the
-final softmax layer and $C$ is the total number of object classes (ref. Fig.1).
+, where $x$ is the input sample and $s_c$ is the output activation score (before the softmax operation) for class $c$ and $C$ is the total number of object classes (ref. Fig.1).
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,25 +327,22 @@ final softmax layer and $C$ is the total number of object classes (ref. Fig.1).
   }
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Proposed
-  Architecture}{name=pro_archi,column=0,span=2,below=abstract}{
+  \headerbox{Proposed  Architecture}{name=pro_archi,column=0,span=2,below=abstract}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
-  \includegraphics[height=27.5em]{images/poster_icvss_re-final1.pdf}
+  \includegraphics[trim={1cm 13cm 1cm 3cm}, clip=true, scale=0.67]{images/poster_icvss_re-final2.pdf}
 \end{center}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Benefits}{name=benefits,column=2,span=1.05,below=proapp}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-  \item Background is intuitively treated as an entity other than the objects
-  of interest, for which \textbf{object class activation is < $T$}
-  \item Allows \textbf{end-to-end learning} of background threshold
-  \item \textbf{Unambiguous class priors} such as natural language semantics or
-  visual attributes can be leveraged in end-to-end training \cite{proto}
-  \textbf{as the set of fixed weights $\phi$ }(Ref. Fig.1)
-\end{itemize}
+- As aligned with our natural intuition, background is treated as a visual concept that is dissimilar to any of the object categories of interest i.e. for which \textbf{the class activation score for any and every class is < $T$}.
+
+- Allows \textbf{end-to-end learning} of background threshold.
+
+- \textbf{Unambiguous class priors} $\phi$ based on natural language semantics or
+  visual attributes can be leveraged for zero-shot recognition (Ref. Fig.1).
   }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Dataset}{name=dataset,column=2,span=1.05,below=benefits}{
@@ -356,17 +350,16 @@ final softmax layer and $C$ is the total number of object classes (ref. Fig.1).
 German Traffic Sign Dataset (43 classes):
 %\begin{itemize}
 
- \textbf{Training}: 39209 object samples \& 1410 background samples
+- \textbf{Training}: 39209 object samples \& 1410 background samples.
 
- \textbf{Val \& Test}: 6316 object samples \& 450 background samples;
-  6315 object samples \& 525 background samples
+- \textbf{Val \& Test}: 6316 object samples \& 450 background samples;
+  6315 object samples \& 525 background samples.
 %\end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=1.05,below=dataset}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Results are promising}:
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline 
